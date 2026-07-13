@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A2R Street Coffee - Kopi Jalanan, Rasa Bintang Lima</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Space Grotesk & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Tailwind Custom Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: {
+                            50: '#fdf8f5',
+                            100: '#fbeee6',
+                            500: '#d97706', // Amber accent
+                            600: '#b45309',
+                            800: '#451a03',
+                            900: '#1c1917', // Dark Stone
+                            950: '#0c0a09'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Space Grotesk', 'sans-serif'],
+                        body: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Menghubungkan ke CSS Eksternal -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-coffee-950 text-stone-100 min-h-screen flex flex-col justify-between">
+
+    <!-- NAVBAR -->
+    <nav class="sticky top-0 z-50 bg-coffee-950/90 backdrop-blur-md border-b border-stone-800">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#home" onclick="navigateTo('home')" class="text-2xl font-bold tracking-wider text-coffee-500">
+                A2R<span class="text-white">.street coffe</span>
+            </a>
+
+            <!-- Desktop Links -->
+            <div class="hidden md:flex space-x-8 items-center font-medium">
+                <a href="#home" onclick="navigateTo('home')" id="nav-home"
+                    class="nav-link text-coffee-500 transition duration-300">Beranda</a>
+                <a href="#menu" onclick="navigateTo('menu')" id="nav-menu"
+                    class="nav-link text-stone-400 hover:text-coffee-500 transition duration-300">Menu</a>
+                <a href="#about" onclick="navigateTo('about')" id="nav-about"
+                    class="nav-link text-stone-400 hover:text-coffee-500 transition duration-300">Tentang Kami</a>
+                <a href="https://wa.me/6281413036090?text=Halo%20A2R%20Street%20Coffee!%20Saya%20ingin%20memesan%20menu..."
+                    target="_blank"
+                    class="bg-coffee-500 text-coffee-950 px-5 py-2.5 rounded-full font-bold text-sm hover:bg-coffee-600 hover:text-white transition-all shadow-lg shadow-coffee-500/20">
+                    <i class="fa-brands fa-whatsapp mr-2 text-base"></i>Pesan Sekarang
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button onclick="toggleMobileMenu()"
+                class="md:hidden text-stone-100 hover:text-coffee-500 focus:outline-none">
+                <i id="menu-icon" class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-coffee-900 border-t border-stone-800 px-6 py-6 space-y-4">
+            <a href="#home" onclick="navigateTo('home')"
+                class="block text-lg font-medium py-2 border-b border-stone-800/50">Beranda</a>
+            <a href="#menu" onclick="navigateTo('menu')"
+                class="block text-lg font-medium py-2 border-b border-stone-800/50">Menu</a>
+            <a href="#about" onclick="navigateTo('about')"
+                class="block text-lg font-medium py-2 border-b border-stone-800/50">Tentang Kami</a>
+            <a href="https://wa.me/6281413036090?text=Halo%20A2R%20Street%20Coffee!%20Saya%20ingin%20memesan%20menu..."
+                target="_blank"
+                class="block w-full text-center bg-coffee-500 text-coffee-950 py-3 rounded-xl font-bold mt-4">
+                <i class="fa-brands fa-whatsapp mr-2 text-lg"></i>Pesan lewat WA
+            </a>
+        </div>
+    </nav>
+
+    <!-- MAIN SECTIONS CONTAINER -->
+    <main class="flex-grow">
+
+        <!-- 1. BERANDA (HOME) PAGE -->
+        <section id="page-home" class="page-section active">
+            <!-- Hero Landing -->
+            <div class="relative h-[85vh] flex items-center justify-center bg-cover bg-center px-6"
+                style="background-image: linear-gradient(rgba(12, 10, 9, 0.75), rgba(12, 10, 9, 0.95)), url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&q=80&w=1500');">
+                <div class="max-w-4xl text-center space-y-6">
+                    <span
+                        class="inline-block bg-coffee-800/60 border border-coffee-500/30 text-coffee-500 font-semibold tracking-widest text-xs px-4 py-1.5 rounded-full uppercase">
+                        Premium Streetwear Coffee Experience
+                    </span>
+                    <h1 class="text-4xl sm:text-6xl md:text-7xl font-bold leading-tight tracking-tight">
+                        Kopi Jalanan,<br><span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-coffee-500 to-amber-300">Kualitas
+                            Bintang Lima</span>
+                    </h1>
+                    <p class="text-stone-400 text-base sm:text-lg md:text-xl max-w-xl mx-auto leading-relaxed">
+                        Nongkrong santai di tepi jalanan dengan racikan premium berkualitas tinggi tanpa
+                        perlu merobek dompetmu.
+                    </p>
+                    <div class="pt-4 flex flex-col sm:flex-row justify-center gap-4">
+                        <a href="#menu" onclick="navigateTo('menu')"
+                            class="bg-coffee-500 text-coffee-950 hover:bg-coffee-600 hover:text-white px-8 py-4 rounded-full font-bold text-base transition-all shadow-lg shadow-coffee-500/20 text-center">
+                            Lihat Menu Kami
+                        </a>
+                        <a href="#about" onclick="navigateTo('about')"
+                            class="border border-stone-700 hover:border-coffee-500 hover:bg-coffee-500/10 px-8 py-4 rounded-full font-bold text-base transition-all text-center">
+                            Pelajari Cerita Kami
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Why Choose Us -->
+            <div class="max-w-6xl mx-auto px-6 py-20">
+                <div class="text-center mb-16 space-y-2">
+                    <h2 class="text-3xl md:text-4xl font-bold">Kenapa Harus Nongkrong di <span
+                            class="text-coffee-500">A2R</span>?</h2>
+                    <p class="text-stone-400 max-w-lg mx-auto">Kami mendefinisikan ulang cara kamu menikmati secangkir
+                        kopi jalanan.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Feature 1 -->
+                    <div
+                        class="bg-stone-900/50 p-8 rounded-2xl border border-stone-800/80 hover:border-coffee-500/30 transition-all duration-300 group">
+                        <div
+                            class="w-12 h-12 bg-coffee-500/10 text-coffee-500 rounded-xl flex items-center justify-center text-xl font-bold mb-6 group-hover:bg-coffee-500 group-hover:text-coffee-950 transition-all duration-300">
+                            <i class="fa-solid fa-mug-hot"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Biji Kopi Specialty</h3>
+                        <p class="text-stone-400 text-sm leading-relaxed">Kami hanya menggunakan 100% biji kopi
+                            single-origin pilihan nusantara yang dipanggang dengan standar tinggi.</p>
+                    </div>
+                    <!-- Feature 2 -->
+                    <div
+                        class="bg-stone-900/50 p-8 rounded-2xl border border-stone-800/80 hover:border-coffee-500/30 transition-all duration-300 group">
+                        <div
+                            class="w-12 h-12 bg-coffee-500/10 text-coffee-500 rounded-xl flex items-center justify-center text-xl font-bold mb-6 group-hover:bg-coffee-500 group-hover:text-coffee-950 transition-all duration-300">
+                            <i class="fa-solid fa-tags"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Harga Bersahabat</h3>
+                        <p class="text-stone-400 text-sm leading-relaxed">Nikmati cita rasa kopi premium sekelas kafe
+                            estetik tanpa perlu khawatir dompet terkuras habis.</p>
+                    </div>
+                    <!-- Feature 3 -->
+                    <div
+                        class="bg-stone-900/50 p-8 rounded-2xl border border-stone-800/80 hover:border-coffee-500/30 transition-all duration-300 group">
+                        <div
+                            class="w-12 h-12 bg-coffee-500/10 text-coffee-500 rounded-xl flex items-center justify-center text-xl font-bold mb-6 group-hover:bg-coffee-500 group-hover:text-coffee-950 transition-all duration-300">
+                            <i class="fa-solid fa-comments"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Vibe Jalanan yang Santai</h3>
+                        <p class="text-stone-400 text-sm leading-relaxed">Tempat paling ideal untuk menikmati malam,
+                            bertukar cerita hangat dengan teman, atau sekadar kontemplasi.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial Section -->
+            <div class="bg-stone-900/40 py-20 border-y border-stone-800/60">
+                <div class="max-w-4xl mx-auto px-6 text-center space-y-8">
+                    <i class="fa-solid fa-quote-left text-4xl text-coffee-500/40"></i>
+                    <p class="text-xl md:text-2xl font-light italic leading-relaxed text-stone-200">
+                        "A2R ini juara banget! Kopi susu aren-nya beneran tebel kopinya tapi tetep creamy. Suasana
+                        nongkrong di pinggir jalannya asik parah, serasa punya kota sendiri kalau malam."
+                    </p>
+                    <div>
+                        <h4 class="font-bold text-lg text-white">Sapta Nur Fajriansyah</h4>
+                        <p class="text-stone-500 text-xs tracking-wider uppercase mt-1">Pelanggan Setia sejak 2025</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-stone-900/40 py-20 border-y border-stone-800/60">
+                <div class="max-w-4xl mx-auto px-6 text-center space-y-8">
+                    <i class="fa-solid fa-quote-left text-4xl text-coffee-500/40"></i>
+                    <p class="text-xl md:text-2xl font-light italic leading-relaxed text-stone-200">
+                        "Kopinya enak banget! Rasanya balance, tidak terlalu pahit dan tidak terlalu manis. Harganya
+                        ramah di kantong, tapi
+                        kualitasnya seperti coffee shop premium. Pasti bakal jadi langganan di A2R Street Coffee!"
+                    </p>
+                    <div>
+                        <h4 class="font-bold text-lg text-white">Faiz Rizky Maulana</h4>
+                        <p class="text-stone-500 text-xs tracking-wider uppercase mt-1">Pelanggan Setia sejak 2025</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-stone-900/40 py-20 border-y border-stone-800/60">
+                <div class="max-w-4xl mx-auto px-6 text-center space-y-8">
+                    <i class="fa-solid fa-quote-left text-4xl text-coffee-500/40"></i>
+                    <p class="text-xl md:text-2xl font-light italic leading-relaxed text-stone-200">
+                        "Pelayanannya cepat dan ramah. Kopinya selalu fresh, aromanya wangi, dan bikin semangat buat
+                        mulai aktivitas.
+                        Recommended banget buat pecinta kopi!"
+                    </p>
+                    <div>
+                        <h4 class="font-bold text-lg text-white">Dani Agustiya</h4>
+                        <p class="text-stone-500 text-xs tracking-wider uppercase mt-1">Pelanggan Setia sejak 2025</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. MENU PAGE -->
+        <section id="page-menu" class="page-section">
+            <div class="max-w-6xl mx-auto px-6 py-16">
+                <!-- Header Menu -->
+                <div class="text-center mb-12 space-y-4">
+                    <h2 class="text-4xl md:text-5xl font-bold text-white">Menu <span class="text-coffee-500">A2R
+                            Street</span></h2>
+                    <p class="text-stone-400 max-w-md mx-auto">Diramu dengan penuh dedikasi oleh barista jalanan
+                        profesional kami. Silakan pilih minuman favoritmu.</p>
+                </div>
+
+                <!-- Category Filters -->
+                <div class="flex flex-wrap justify-center gap-3 mb-12">
+                    <button onclick="filterMenu('all')" id="btn-all"
+                        class="filter-btn px-6 py-2 rounded-full font-semibold text-sm bg-coffee-500 text-coffee-950 transition duration-300">Semua</button>
+                    <button onclick="filterMenu('kopi-klasik')" id="btn-kopi-klasik"
+                        class="filter-btn px-6 py-2 rounded-full font-semibold text-sm bg-stone-900 border border-stone-850 hover:border-coffee-500 transition duration-300">Classic
+                        Coffee</button>
+                    <button onclick="filterMenu('non-kopi')" id="btn-non-kopi"
+                        class="filter-btn px-6 py-2 rounded-full font-semibold text-sm bg-stone-900 border border-stone-850 hover:border-coffee-500 transition duration-300">Non-Coffee</button>
+                    <button onclick="filterMenu('cemilan')" id="btn-cemilan"
+                        class="filter-btn px-6 py-2 rounded-full font-semibold text-sm bg-stone-900 border border-stone-850 hover:border-coffee-500 transition duration-300">Snacks
+                        & Bites</button>
+                </div>
+
+                <!-- Menu Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                    <!-- Kopi Klasik -->
+                    <div class="menu-card bg-stone-900 rounded-2xl overflow-hidden border border-stone-800 flex flex-col justify-between"
+                        data-category="kopi-klasik">
+                        <div class="relative overflow-hidden group">
+                            <img src="https://i.ibb.co.com/5pPwsNR/Classic-Americano.jpg alt=" Classic-Americano"
+                                alt="Classic Americano"
+                                class="w-full h-56 object-cover group-hover:scale-105 transition-all duration-500">
+                        </div>
+                        <div class="p-6 space-y-4 flex-grow flex flex-col justify-between">
+                            <div class="space-y-2">
+                                <div class="flex justify-between items-center">
+                                    <h3 class="font-bold text-xl text-white">Classic Americano</h3>
+                                    <span class="text-coffee-500 font-bold text-lg">Rp 13.000</span>
+                                </div>
+                                <p class="text-stone-400 text-sm">Double shot espresso arabika premium murni dengan air
+                                    dingin untuk mengembalikan energi harimu.</p>
+                            </div>
+                            <button onclick="orderViaWA('Classic Americano')"
+                                class="w-full mt-4 bg-stone-800 hover:bg-coffee-500 hover:text-coffee-950 border border-stone-700 hover:border-coffee-500 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-lg"></i> Pesan Produk Ini
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-card bg-stone-900 rounded-2xl overflow-hidden border border-stone-800 flex flex-col justify-between"
+                        data-category="kopi-klasik">
+                        <div class="relative overflow-hidden group">
+                            <img src="https://i.ibb.co.com/Swb5wpfP/Batter-Scotch-Coffe.jpg" alt="Batter Scotch Coffe"
+                                class="w-full h-56 object-cover group-hover:scale-105 transition-all duration-500">
+                        </div>
+                        <div class="p-6 space-y-4 flex-grow flex flex-col justify-between">
+                            <div class="space-y-2">
+                                <div class="flex justify-between items-center">
+                                    <h3 class="font-bold text-xl text-white">Batter Scotch Coffe</h3>
+                                    <span class="text-coffee-500 font-bold text-lg">Rp 15.000</span>
+                                </div>
+                                <p class="text-stone-400 text-sm">Double shot espresso arabika premium murni dengan air
+                                    dingin untuk mengembalikan energi harimu.</p>
+                            </div>
+                            <button onclick="orderViaWA('Batter Scotch Coffe')"
+                                class="w-full mt-4 bg-stone-800 hover:bg-coffee-500 hover:text-coffee-950 border border-stone-700 hover:border-coffee-500 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-lg"></i> Pesan Produk Ini
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-card bg-stone-900 rounded-2xl overflow-hidden border border-stone-800 flex flex-col justify-between"
+                        data-category="kopi-klasik">
+                        <div class="relative overflow-hidden group">
+                            <img src="https://i.ibb.co.com/DDLTFQVR/creamy-capucino.jpg" alt="Creamy Cappuccino"
+                                class="w-full h-56 object-cover group-hover:scale-105 transition-all duration-500">
+                        </div>
+                        <div class="p-6 space-y-4 flex-grow flex flex-col justify-between">
+                            <div class="space-y-2">
+                                <div class="flex justify-between items-center">
+                                    <h3 class="font-bold text-xl text-white">Creamy Cappuccino</h3>
+                                    <span class="text-coffee-500 font-bold text-lg">Rp 15.000</span>
+                                </div>
+                                <p class="text-stone-400 text-sm">Double shot espresso arabika premium murni dengan air
+                                    dingin untuk mengembalikan energi harimu.</p>
+                            </div>
+                            <button onclick="orderViaWA('Creamy Cappuccino')"
+                                class="w-full mt-4 bg-stone-800 hover:bg-coffee-500 hover:text-coffee-950 border border-stone-700 hover:border-coffee-500 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-lg"></i> Pesan Produk Ini
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-card bg-stone-900 rounded-2xl overflow-hidden border border-stone-800 flex flex-col justify-between"
+                        data-category="kopi-klasik">
+                        <div class="relative overflow-hidden group">
+                            <img src="https://i.ibb.co.com/27rRZSMg/Caramel-Latte.jpg" alt="Caramel Latte"
+                                class="w-full h-56 object-cover group-hover:scale-105 transition-all duration-500">
+                        </div>
+                        <div class="p-6 space-y-4 flex-grow flex flex-col justify-between">
+                            <div class="space-y-2">
+                                <div class="flex justify-between items-center">
+                                    <h3 class="font-bold text-xl text-white">Caramel Latte</h3>
+                                    <span class="text-coffee-500 font-bold text-lg">Rp 15.000</span>
+                                </div>
+                                <p class="text-stone-400 text-sm">Double shot espresso arabika premium murni dengan air
+                                    dingin untuk mengembalikan energi harimu.</p>
+                            </div>
+                            <button onclick="orderViaWA('Caramel Latte')"
+                                class="w-full mt-4 bg-stone-800 hover:bg-coffee-500 hover:text-coffee-950 border border-stone-700 hover:border-coffee-500 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-lg"></i> Pesan Produk Ini
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-card bg-stone-900 rounded-2xl overflow-hidden border border-stone-800 flex flex-col justify-between"
+                        data-category="kopi-klasik">
+                        <div class="relative overflow-hidden group">
+                            <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=600"
+                                alt="Palm Sugar Latte"
+                                class="w-full h-56 object-cover group-hover:scale-105 transition-all duration-500">
+                        </div>
+                        <div class="p-6 space-y-4 flex-grow flex flex-col justify-between">
+                            <div class="space-y-2">
+                                <div class="flex justify-between items-center">
+                                    <h3 class="font-bold text-xl text-white">Palm Sugar Latte</h3>
+                                    <span class="text-coffee-500 font-bold text-lg">Rp 15.000</span>
+                                </div>
+                                <p class="text-stone-400 text-sm">Double shot espresso arabika premium murni dengan air
+                                    dingin untuk mengembalikan energi harimu.</p>
+                            </div>
+                            <button onclick="orderViaWA('Palm Sugar Latte')"
+                                class="w-full mt-4 bg-stone-800 hover:bg-coffee-500 hover:text-coffee-950 border border-stone-700 hover:border-coffee-500 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-lg"></i> Pesan Produk Ini
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-card bg-stone-900 rounded-2xl overflow-hidden border border-stone-800 flex flex-col justify-between"
+                        data-category="kopi-klasik">
+                        <div class="relative overflow-hidden group">
+                            <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=600"
+                                alt="Hazelnut Harmony"
+                                class="w-full h-56 object-cover group-hover:scale-105 transition-all duration-500">
+                        </div>
+                        <div class="p-6 space-y-4 flex-grow flex flex-col justify-between">
+                            <div class="space-y-2">
+                                <div class="flex justify-between items-center">
+                                    <h3 class="font-bold text-xl text-white">Hazelnut Harmony</h3>
+                                    <span class="text-coffee-500 font-bold text-lg">Rp 15.000</span>
+                                </div>
+                                <p class="text-stone-400 text-sm">Double shot espresso arabika premium murni dengan air
+                                    dingin untuk mengembalikan energi harimu.</p>
+                            </div>
+                            <button onclick="orderViaWA('Hazelnut Harmony')"
+                                class="w-full mt-4 bg-stone-800 hover:bg-coffee-500 hover:text-coffee-950 border border-stone-700 hover:border-coffee-500 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-lg"></i> Pesan Produk Ini
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-card bg-stone-900 rounded-2xl overflow-hidden border border-stone-800 flex flex-col justify-between"
+                        data-category="kopi-klasik">
+                        <div class="relative overflow-hidden group">
+                            <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=600"
+                                alt="Vanilla Latte"
+                                class="w-full h-56 object-cover group-hover:scale-105 transition-all duration-500">
+                        </div>
+                        <div class="p-6 space-y-4 flex-grow flex flex-col justify-between">
+                            <div class="space-y-2">
+                                <div class="flex justify-between items-center">
+                                    <h3 class="font-bold text-xl text-white">Vanilla Latte</h3>
+                                    <span class="text-coffee-500 font-bold text-lg">Rp 15.000</span>
+                                </div>
+                                <p class="text-stone-400 text-sm">Double shot espresso arabika premium murni dengan air
+                                    dingin untuk mengembalikan energi harimu.</p>
+                            </div>
+                            <button onclick="orderViaWA('Vanilla Latte')"
+                                class="w-full mt-4 bg-stone-800 hover:bg-coffee-500 hover:text-coffee-950 border border-stone-700 hover:border-coffee-500 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-lg"></i> Pesan Produk Ini
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Non-Coffee -->
+                    <div class="menu-card bg-stone-900 rounded-2xl overflow-hidden border border-stone-800 flex flex-col justify-between"
+                        data-category="non-kopi">
+                        <div class="relative overflow-hidden group">
+                            <img src="https://i.ibb.co.com/HfQMyFVY/Whats-App-Image-2026-07-13-at-14-30-34-1.jpg"
+                                alt=\chocolate
+                                class="w-full h-56 object-cover group-hover:scale-105 transition-all duration-500">
+                        </div>
+                        <div class="p-6 space-y-4 flex-grow flex flex-col justify-between">
+                            <div class="space-y-2">
+                                <div class="flex justify-between items-center">
+                                    <h3 class="font-bold text-xl text-white">Chocolate</h3>
+                                    <span class="text-coffee-500 font-bold text-lg">Rp 12.000</span>
+                                </div>
+                                <p class="text-stone-400 text-sm font-light">Minuman cokelat premium dengan rasa manis
+                                    yang pas dan aroma cokelat yang kaya, dipadukan dengan susu creamy untuk
+                                    sensasi yang lembut.</p>
+                            </div>
+                            <button onclick="orderViaWA('Chocolate')"
+                                class="w-full mt-4 bg-stone-800 hover:bg-coffee-500 hover:text-coffee-950 border border-stone-700 hover:border-coffee-500 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-lg"></i> Pesan Produk Ini
+                            </button>
+                        </div>
+                    </div>
+                    <div class="menu-card bg-stone-900 rounded-2xl overflow-hidden border border-stone-800 flex flex-col justify-between"
+                        data-category="non-kopi">
+                        <div class="relative overflow-hidden group">
+                            <img src="https://i.ibb.co.com/TDSHzz0r/matcha.jpg" alt=matcha
+                                class="w-full h-56 object-cover group-hover:scale-105 transition-all duration-500">
+                        </div>
+                        <div class="p-6 space-y-4 flex-grow flex flex-col justify-between">
+                            <div class="space-y-2">
+                                <div class="flex justify-between items-center">
+                                    <h3 class="font-bold text-xl text-white">Matcha</h3>
+                                    <span class="text-coffee-500 font-bold text-lg">Rp 15.000</span>
+                                </div>
+                                <p class="text-stone-400 text-sm font-light">Matcha berkualitas dengan cita rasa khas
+                                    teh hijau Jepang yang lembut, dipadukan susu segar sehingga menghasilkan rasa
+                                    creamy dan menyegarkan.</p>
+                            </div>
+                            <button onclick="orderViaWA('Matcha')"
+                                class="w-full mt-4 bg-stone-800 hover:bg-coffee-500 hover:text-coffee-950 border border-stone-700 hover:border-coffee-500 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-lg"></i> Pesan Produk Ini
+                            </button>
+                        </div>
+                    </div>
+                    <div class="menu-card bg-stone-900 rounded-2xl overflow-hidden border border-stone-800 flex flex-col justify-between"
+                        data-category="non-kopi">
+                        <div class="relative overflow-hidden group">
+                            <img src="https://i.ibb.co.com/wZPpzdKF/Whats-App-Image-2026-07-13-at-14-41-14.jpg" alt=Red
+                                velvet
+                                class="w-full h-56 object-cover group-hover:scale-105 transition-all duration-500">
+                        </div>
+                        <div class="p-6 space-y-4 flex-grow flex flex-col justify-between">
+                            <div class="space-y-2">
+                                <div class="flex justify-between items-center">
+                                    <h3 class="font-bold text-xl text-white">Red Velvet</h3>
+                                    <span class="text-coffee-500 font-bold text-lg">Rp 12.000</span>
+                                </div>
+                                <p class="text-stone-400 text-sm font-light">Perpaduan rasa red velvet yang lembut
+                                    dengan sentuhan cokelat dan susu creamy, menghasilkan minuman manis dengan aroma
+                                    yang khas.</p>
+                            </div>
+                            <button onclick="orderViaWA('Red Velvet')"
+                                class="w-full mt-4 bg-stone-800 hover:bg-coffee-500 hover:text-coffee-950 border border-stone-700 hover:border-coffee-500 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-lg"></i> Pesan Produk Ini
+                            </button>
+                        </div>
+                    </div>
+                    <div class="menu-card bg-stone-900 rounded-2xl overflow-hidden border border-stone-800 flex flex-col justify-between"
+                        data-category="non-kopi">
+                        <div class="relative overflow-hidden group">
+                            <img src="https://i.ibb.co.com/zHmLfL9y/green-tea.jpg" alt="green-tea" alt="Green Tea"
+                                class="w-full h-56 object-cover group-hover:scale-105 transition-all duration-500">
+                        </div>
+                        <div class="p-6 space-y-4 flex-grow flex flex-col justify-between">
+                            <div class="space-y-2">
+                                <div class="flex justify-between items-center">
+                                    <h3 class="font-bold text-xl text-white">Green Tea</h3>
+                                    <span class="text-coffee-500 font-bold text-lg">Rp 12.000</span>
+                                </div>
+                                <p class="text-stone-400 text-sm font-light">Minuman green tea yang segar dengan cita
+                                    rasa teh hijau yang ringan dan creamy, cocok dinikmati kapan saja.</p>
+                            </div>
+                            <button onclick="orderViaWA('Green Tea')"
+                                class="w-full mt-4 bg-stone-800 hover:bg-coffee-500 hover:text-coffee-950 border border-stone-700 hover:border-coffee-500 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-lg"></i> Pesan Produk Ini
+                            </button>
+                        </div>
+                    </div>
+                    <div class="menu-card bg-stone-900 rounded-2xl overflow-hidden border border-stone-800 flex flex-col justify-between"
+                        data-category="non-kopi">
+                        <div class="relative overflow-hidden group">
+                            <img src="https://i.ibb.co.com/Qj3JYtzY/taro.jpg" alt="Purple Taro"
+                                class="w-full h-56 object-cover group-hover:scale-105 transition-all duration-500">
+                        </div>
+                        <div class="p-6 space-y-4 flex-grow flex flex-col justify-between">
+                            <div class="space-y-2">
+                                <div class="flex justify-between items-center">
+                                    <h3 class="font-bold text-xl text-white">Purple Taro</h3>
+                                    <span class="text-coffee-500 font-bold text-lg">Rp 12.000</span>
+                                </div>
+                                <p class="text-stone-400 text-sm font-light">Minuman taro dengan aroma khas ubi ungu dan
+                                    tekstur lembut, dipadukan susu creamy yang memberikan rasa manis dan nikmat.</p>
+                            </div>
+                            <button onclick="orderViaWA('Purple Taro')"
+                                class="w-full mt-4 bg-stone-800 hover:bg-coffee-500 hover:text-coffee-950 border border-stone-700 hover:border-coffee-500 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-lg"></i> Pesan Produk Ini
+                            </button>
+                        </div>
+                    </div>
+                    <div class="menu-card bg-stone-900 rounded-2xl overflow-hidden border border-stone-800 flex flex-col justify-between"
+                        data-category="non-kopi">
+                        <div class="relative overflow-hidden group">
+                            <img src="https://i.ibb.co.com/MykCyn0n/strawberry.jpg" alt="strawberry"
+                                class="w-full h-56 object-cover group-hover:scale-105 transition-all duration-500">
+                        </div>
+                        <div class="p-6 space-y-4 flex-grow flex flex-col justify-between">
+                            <div class="space-y-2">
+                                <div class="flex justify-between items-center">
+                                    <h3 class="font-bold text-xl text-white">Strawberry</h3>
+                                    <span class="text-coffee-500 font-bold text-lg">Rp 12.000</span>
+                                </div>
+                                <p class="text-stone-400 text-sm font-light">Minuman strawberry dengan perpaduan rasa
+                                    manis dan sedikit asam yang menyegarkan, dipadukan susu sehingga terasa lebih
+                                    lembut dan creamy.</p>
+                            </div>
+                            <button onclick="orderViaWA('Strawberry')"
+                                class="w-full mt-4 bg-stone-800 hover:bg-coffee-500 hover:text-coffee-950 border border-stone-700 hover:border-coffee-500 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-lg"></i> Pesan Produk Ini
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <div class="menu-card bg-stone-900 rounded-2xl overflow-hidden border border-stone-800 flex flex-col justify-between"
+                        data-category="non-kopi">
+                        <div class="relative overflow-hidden group">
+                            <img src="https://i.ibb.co.com/VndCbpz/mangga.jpg" alt="Mangga"
+                                class="w-full h-56 object-cover group-hover:scale-105 transition-all duration-500">
+                        </div>
+                        <div class="p-6 space-y-4 flex-grow flex flex-col justify-between">
+                            <div class="space-y-2">
+                                <div class="flex justify-between items-center">
+                                    <h3 class="font-bold text-xl text-white">Mangga</h3>
+                                    <span class="text-coffee-500 font-bold text-lg">Rp 12.000</span>
+                                </div>
+                                <p class="text-stone-400 text-sm">Minuman mangga yang menyegarkan dengan rasa manis
+                                    alami dan sedikit sentuhan asam, dipadukan dengan susu creamy untuk
+                                    menghasilkan cita rasa yang lembut dan nikmat.</p>
+                            </div>
+                            <button onclick="orderViaWA('Mangga')"
+                                class="w-full mt-4 bg-stone-800 hover:bg-coffee-500 hover:text-coffee-950 border border-stone-700 hover:border-coffee-500 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-lg"></i> Pesan Produk Ini
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Snacks -->
+                    <div class="menu-card bg-stone-900 rounded-2xl overflow-hidden border border-stone-800 flex flex-col justify-between"
+                        data-category="cemilan">
+                        <div class="relative overflow-hidden group">
+                            <img src="https://i.ibb.co.com/dnG59k3/kentang.jpg" alt="kentang"
+                                class="w-full h-56 object-cover group-hover:scale-105 transition-all duration-500">
+                        </div>
+                        <div class="p-6 space-y-4 flex-grow flex flex-col justify-between">
+                            <div class="space-y-2">
+                                <div class="flex justify-between items-center">
+                                    <h3 class="font-bold text-xl text-white">Kentang Goreng</h3>
+                                    <span class="text-coffee-500 font-bold text-lg">Rp 10.000</span>
+                                </div>
+                                <p class="text-stone-400 text-sm">Kentang goreng crispy dengan potongan tebal, disajikan
+                                    hangat dan dibumbui dengan seasoning pilihan yang bikin nagih.</p>
+                            </div>
+                            <button onclick="orderViaWA('Kentang Goreng')"
+                                class="w-full mt-4 bg-stone-800 hover:bg-coffee-500 hover:text-coffee-950 border border-stone-700 hover:border-coffee-500 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-lg"></i> Pesan Produk Ini
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-card bg-stone-900 rounded-2xl overflow-hidden border border-stone-800 flex flex-col justify-between"
+                        data-category="cemilan">
+                        <div class="relative overflow-hidden group">
+                            <img src="https://i.ibb.co.com/zTm14PtY/Bakso-Goreng.jpg" alt="Bakso-Goreng"
+                                class="w-full h-56 object-cover group-hover:scale-105 transition-all duration-500">
+                        </div>
+                        <div class="p-6 space-y-4 flex-grow flex flex-col justify-between">
+                            <div class="space-y-2">
+                                <div class="flex justify-between items-center">
+                                    <h3 class="font-bold text-xl text-white">Baso Goreng</h3>
+                                    <span class="text-coffee-500 font-bold text-lg">Rp 10.000</span>
+                                </div>
+                                <p class="text-stone-400 text-sm">Baso goreng renyah dengan tekstur kenyal di dalam,
+                                    camilan gurih yang pas menemani waktu ngopi.</p>
+                            </div>
+                            <button onclick="orderViaWA('Baso Goreng')"
+                                class="w-full mt-4 bg-stone-800 hover:bg-coffee-500 hover:text-coffee-950 border border-stone-700 hover:border-coffee-500 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-lg"></i> Pesan Produk Ini
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-card bg-stone-900 rounded-2xl overflow-hidden border border-stone-800 flex flex-col justify-between"
+                        data-category="cemilan">
+                        <div class="relative overflow-hidden group">
+                            <img src="https://i.ibb.co.com/TqxvmG8F/otak-otak.jpg alt=" Otak-Otak"
+                                class="w-full h-56 object-cover group-hover:scale-105 transition-all duration-500">
+                        </div>
+                        <div class="p-6 space-y-4 flex-grow flex flex-col justify-between">
+                            <div class="space-y-2">
+                                <div class="flex justify-between items-center">
+                                    <h3 class="font-bold text-xl text-white">Otak-Otak</h3>
+                                    <span class="text-coffee-500 font-bold text-lg">Rp 10.000</span>
+                                </div>
+                                <p class="text-stone-400 text-sm">Otak-otak gurih dengan aroma ikan yang khas,
+                                    dipanggang atau digoreng hingga matang sempurna untuk menemani secangkir
+                                    kopi.</p>
+                            </div>
+                            <button onclick="orderViaWA('Otak-Otak')"
+                                class="w-full mt-4 bg-stone-800 hover:bg-coffee-500 hover:text-coffee-950 border border-stone-700 hover:border-coffee-500 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-lg"></i> Pesan Produk Ini
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-card bg-stone-900 rounded-2xl overflow-hidden border border-stone-800 flex flex-col justify-between"
+                        data-category="cemilan">
+                        <div class="relative overflow-hidden group">
+                            <img src="https://i.ibb.co.com/MkYMxHWq/cireng.jpg" alt="Cireng"
+                                class="w-full h-56 object-cover group-hover:scale-105 transition-all duration-500">
+                        </div>
+                        <div class="p-6 space-y-4 flex-grow flex flex-col justify-between">
+                            <div class="space-y-2">
+                                <div class="flex justify-between items-center">
+                                    <h3 class="font-bold text-xl text-white">Cireng</h3>
+                                    <span class="text-coffee-500 font-bold text-lg">Rp 10.000</span>
+                                </div>
+                                <p class="text-stone-400 text-sm">Cireng renyah di luar, kenyal di dalam, dengan cita
+                                    rasa gurih yang cocok dinikmati bersama saus sambal atau bumbu
+                                    rujak.</p>
+                            </div>
+                            <button onclick="orderViaWA('Cireng')"
+                                class="w-full mt-4 bg-stone-800 hover:bg-coffee-500 hover:text-coffee-950 border border-stone-700 hover:border-coffee-500 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-lg"></i> Pesan Produk Ini
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. TENTANG KAMI (ABOUT) PAGE -->
+        <section id="page-about" class="page-section">
+            <div class="max-w-6xl mx-auto px-6 py-16 space-y-16">
+
+                <!-- Story Split -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-coffee-500 rounded-2xl rotate-3 scale-95 opacity-20 -z-10">
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&q=80&w=800"
+                            alt="Tentang A2R" class="rounded-2xl shadow-2xl border border-stone-800">
+                    </div>
+                    <div class="space-y-6">
+                        <span
+                            class="inline-block bg-coffee-500/10 text-coffee-500 px-3.5 py-1.5 rounded-full font-bold text-xs uppercase tracking-wider">A2R
+                            STREET COFFEE STORY</span>
+                        <h2 class="text-3xl md:text-5xl font-bold leading-tight">Secangkir Cerita Dari Bahu Jalanan</h2>
+                        <p class="text-stone-300 leading-relaxed text-base">
+                            Didirikan oleh sekelompok sahabat penikmat kopi garis keras, <strong>A2R Street
+                                Coffee</strong> lahir dari mimpi sederhana: menyajikan esensi kopi terbaik yang tidak
+                            dibatasi sekat bangunan semen kaku. Kami ingin membawa kemewahan kafe langsung ke trotoar
+                            kota yang sarat dinamika kehidupan.
+                        </p>
+                        <p class="text-stone-400 leading-relaxed text-sm">
+                            Nama **A2R** terinspirasi dari visi kami untuk menghadirkan kopi yang bersahaja namun
+                            berkualitas prima di jalur cepat aktivitas perkotaan. Di sinilah tempat bersilaturahmi,
+                            bercanda tawa, dan menghabiskan malam sembari bertukar pikiran seputar mimpi masing-masing,
+                            ditemani keharuman khas espreso segar.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Values / Stats Grid -->
+                <div
+                    class="grid grid-cols-2 md:grid-cols-4 gap-6 bg-stone-900/40 p-8 rounded-3xl border border-stone-800 text-center">
+                    <div>
+                        <p class="text-4xl md:text-5xl font-bold text-coffee-500">100%</p>
+                        <p class="text-stone-400 text-xs md:text-sm mt-2">Biji Kopi Lokal Pilihan</p>
+                    </div>
+                    <div>
+                        <p class="text-4xl md:text-5xl font-bold text-coffee-500">5k+</p>
+                        <p class="text-stone-400 text-xs md:text-sm mt-2">Cangkir Terjual Setiap Bulan</p>
+                    </div>
+                    <div>
+                        <p class="text-4xl md:text-5xl font-bold text-coffee-500">3</p>
+                        <p class="text-stone-400 text-xs md:text-sm mt-2">Cabang Booth Aktif</p>
+                    </div>
+                    <div>
+                        <p class="text-4xl md:text-5xl font-bold text-coffee-500">Rp 12k+</p>
+                        <p class="text-stone-400 text-xs md:text-sm mt-2">Sangat Ramah Kantong</p>
+                    </div>
+                </div>
+
+                <!-- Meet Our Base / Location Detail -->
+                <div class="bg-stone-900 rounded-3xl p-8 md:p-12 border border-stone-800 space-y-8">
+                    <div class="text-center max-w-lg mx-auto space-y-2">
+                        <h3 class="text-2xl md:text-3xl font-bold">Basecamp Nongkrong Kami</h3>
+                        <p class="text-stone-400 text-sm">Datang dan rasakan suasana jalanan yang sesungguhnya di gerai
+                            kami.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="w-10 h-10 bg-coffee-500/10 rounded-xl text-coffee-500 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-map-location-dot"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-white">Alamat Booth</h4>
+                                    <p class="text-stone-400 text-sm mt-1">Jl. Fatahillah, Stadion Watu Belah, Sumber,
+                                        Cirebon, Jawa Barat
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="w-10 h-10 bg-coffee-500/10 rounded-xl text-coffee-500 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-clock"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-white">Jam Operasional</h4>
+                                    <p class="text-stone-400 text-sm mt-1">Setiap Hari: Jam 16:00 WIB s/d 00:00 WIB
+                                        (Bagus buat nongkrong sore ke malam)</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="w-10 h-10 bg-coffee-500/10 rounded-xl text-coffee-500 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-white">Hubungi Kami</h4>
+                                    <p class="text-stone-400 text-sm mt-1">hello@a2rstreetcoffee.com | +62 812-3456-7890
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Simulated Embed Map Style -->
+                        <div
+                            class="bg-stone-950 rounded-2xl border border-stone-800 p-6 flex flex-col justify-between items-center text-center h-64 md:h-auto">
+                            <span class="text-5xl">🗺️</span>
+                            <div class="space-y-1">
+                                <p class="font-bold">Interaktif Google Maps</p>
+                                <p class="text-stone-500 text-xs max-w-xs leading-relaxed">Ganti area ini dengan iframe
+                                    kode embed Google Maps lokasi aslimu.</p>
+                            </div>
+                            <a href="https://maps.app.goo.gl/Ti8G17bfWdgJq2Xg8" target="_blank"
+                                class="bg-coffee-500 text-coffee-950 hover:bg-coffee-600 hover:text-white px-6 py-2.5 rounded-xl font-bold text-sm transition-all">
+                                Buka di Google Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER (PERSISTENT ON ALL PAGES) -->
+    <footer class="bg-coffee-950 border-t border-stone-900 py-12 px-6 mt-16">
+        <div
+            class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+            <div>
+                <a href="#home" onclick="navigateTo('home')" class="text-2xl font-bold text-coffee-500">
+                    A2R<span class="text-white">.street</span>
+                </a>
+                <p class="text-stone-500 text-sm mt-2 max-w-xs">Nongkrong premium hemat ala kawan jalanan terpercaya.
+                </p>
+            </div>
+
+            <div class="flex space-x-6 text-sm text-stone-400">
+                <a href="#home" onclick="navigateTo('home')" class="hover:text-coffee-500 transition-colors">Beranda</a>
+                <a href="#menu" onclick="navigateTo('menu')" class="hover:text-coffee-500 transition-colors">Menu</a>
+                <a href="#about" onclick="navigateTo('about')" class="hover:text-coffee-500 transition-colors">Tentang
+                    Kami</a>
+            </div>
+
+            <div class="flex space-x-4">
+                <a href="#"
+                    class="w-10 h-10 bg-stone-900 hover:bg-coffee-500 hover:text-coffee-950 rounded-full flex items-center justify-center transition-all text-stone-400"><i
+                        class="fa-brands fa-instagram text-lg"></i></a>
+                <a href="#"
+                    class="w-10 h-10 bg-stone-900 hover:bg-coffee-500 hover:text-coffee-950 rounded-full flex items-center justify-center transition-all text-stone-400"><i
+                        class="fa-brands fa-tiktok text-lg"></i></a>
+                <a href="#"
+                    class="w-10 h-10 bg-stone-900 hover:bg-coffee-500 hover:text-coffee-950 rounded-full flex items-center justify-center transition-all text-stone-400"><i
+                        class="fa-brands fa-facebook-f text-lg"></i></a>
+            </div>
+        </div>
+        <div class="max-w-6xl mx-auto text-center border-t border-stone-900 mt-8 pt-6 text-stone-600 text-xs">
+            <p>&copy; 2026 A2R Street Coffee. Semua hak dilindungi.</p>
+        </div>
+    </footer>
+
+    <!-- Menghubungkan ke JavaScript Eksternal -->
+    <script src="script.js"></script>
+</body>
+
+</html>

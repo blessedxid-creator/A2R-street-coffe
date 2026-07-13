@@ -1,0 +1,46 @@
+/* Custom Styles for A2R Street Coffee */
+
+/* Konfigurasi Font Default */
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+h1,
+h2,
+h3,
+.font-heading {
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Transisi Perpindahan Halaman SPA */
+.page-section {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.page-section.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Kustomisasi scrollbar agar lebih estetis & senada dengan tema kopi */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0c0a09;
+    /* coffee-950 */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #451a03;
+    /* coffee-800 */
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #d97706;
+    /* coffee-500 */
+}
